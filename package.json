@@ -1,0 +1,44 @@
+{
+  "name": "advent-dynamo",
+  "version": "0.1.1",
+  "description": "DynamoDB engine for advent.",
+  "keywords": [
+    "store",
+    "event",
+    "microservice",
+    "event sourcing",
+    "advent",
+    "dynamodb",
+    "dynamo"
+  ],
+  "author": "Jonathan Brumley <cayasso@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cayasso/advent-dynamo.git"
+  },
+  "scripts": {
+    "test": "AWS_REGION=us-east-1 ./node_modules/.bin/mocha",
+    "build": "npm run clean && ./node_modules/.bin/babel src -d lib",
+    "prepublish": "npm run build",
+    "clean": "rm -rf lib/"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.7.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.8.0",
+    "babel-plugin-transform-async-to-generator": "6.16.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "babel-preset-stage-3": "^6.5.0",
+    "mocha": "~3.2.0",
+    "pre-commit": "^1.1.2",
+    "should": "~11.1.1"
+  },
+  "main": "./lib/index",
+  "pre-commit": [
+    "test"
+  ]
+}
