@@ -1,9 +1,5 @@
 'use strict'
 
-/**
- * Module dependencies.
- */
-
 import 'babel-polyfill'
 import { DynamoDB } from 'aws-sdk'
 
@@ -49,7 +45,6 @@ export default (endpoint = ENDPOINT, options = {}) => {
 
   function ensureTable(TableName) {
     return new Promise((accept, reject) => {
-      try {
       db.describeTable({ TableName }, (err, info) => {
         if (err) {
           if ('ResourceNotFoundException' === err.code) {
@@ -84,7 +79,6 @@ export default (endpoint = ENDPOINT, options = {}) => {
           accept(info.Table)
         }
       })
-    } catch(e){ console.log(e) }
     })
   }
 
@@ -158,17 +152,17 @@ export default (endpoint = ENDPOINT, options = {}) => {
     })
   }
 
+  function normalize(event) {
+    return {
+      ...event,
+      key: `${(event.ts ? new Date(event.ts) : new Date()).toISOString()}:${event.entity}`
+    }
+  }
+
   function delay(time) {
     return new Promise((resolve) => {
       setTimeout(resolve, time)
     })
-  }
-
-  function normalize(event) {
-    return {
-      ...event,
-      key: `${(event.ts ? new Date(event.ts) : new Date()).toISOString()}`
-    }
   }
 
   return { load, save }

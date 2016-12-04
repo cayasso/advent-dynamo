@@ -4,12 +4,12 @@ import createEngine from '../src/index'
 let db = null
 let engine = null
 let testEvents = [
-  { entityId: '1', type: 'created', payload: { a: 1 } },
-  { entityId: '1', type: 'updated', payload: { a: 2 } },
-  { entityId: '1', type: 'tested', payload: { a: 3 } },
-  { entityId: '2', type: 'created', payload: { a: 1 } },
-  { entityId: '3', type: 'created', payload: { a: 2 } },
-  { entityId: '3', type: 'created', payload: { a: 3 } }
+  { entityId: '1', entity: 'test', type: 'created', payload: { a: 1 } },
+  { entityId: '1', entity: 'test', type: 'updated', payload: { a: 2 } },
+  { entityId: '1', entity: 'test', type: 'tested', payload: { a: 3 } },
+  { entityId: '2', entity: 'test', type: 'created', payload: { a: 1 } },
+  { entityId: '3', entity: 'test', type: 'created', payload: { a: 2 } },
+  { entityId: '3', entity: 'test', type: 'created', payload: { a: 3 } }
 ]
 
 let client = null
