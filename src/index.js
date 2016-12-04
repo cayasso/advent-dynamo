@@ -155,7 +155,7 @@ export default (endpoint = ENDPOINT, options = {}) => {
   function normalize(event) {
     return {
       ...event,
-      key: `${(event.ts ? new Date(event.ts) : new Date()).toISOString()}:${event.entity}`
+      key: `${(event.ts ? new Date(event.ts) : new Date()).toISOString()}:${event.entity || ''}`
     }
   }
 
